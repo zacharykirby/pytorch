@@ -5222,6 +5222,9 @@
     CUDA: cat_cuda
     QuantizedCPU: quantized_cat
 
+- func: foreach_add.Scalar(Tensor[] tensors, Scalar scalar) -> Tensor[]
+  variants: function
+
 - func: _cat.out(Tensor[] tensors, int dim=0, *, Tensor(a!) out) -> Tensor(a!)
   dispatch:
     CPU: _cat_out_cpu

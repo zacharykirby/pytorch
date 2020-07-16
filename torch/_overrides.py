@@ -173,6 +173,7 @@ def get_testing_overrides():
         torch.acosh: lambda input, out=None: -1,
         torch.add_relu: lambda input, other, out=None: -1,
         torch.add: lambda input, other, out=None: -1,
+        #torch.foreach_add_scalar: lambda input, other, out=None: -1,
         torch.addbmm: lambda input, batch1, batch2, alpha=1, beta=1, out=None: -1,
         torch.addcdiv: lambda input, tensor1, tensor2, value=1, out=None: -1,
         torch.addcmul: lambda input, tensor1, tensor2, value=1, out=None: -1,
