@@ -6,21 +6,15 @@
 #include <ATen/Dispatch.h>
 #include <ATen/MemoryOverlap.h>
 #include <ATen/NativeFunctions.h>
-#include <torch/library.h>
+#include <ATen/native/DispatchStub.h>
 
 namespace at {
 namespace native {
 
 
-//DEFINE_DISPATCH(foreach_sub_scalar_stub);
-
 std::vector<Tensor> foreach_add(TensorList tensors, Scalar scalar) {
-  std::cout << "Hello from foreach" << std::endl;
-  foreach_add_scalar_stub(tensors[0].device().type(), tensors, scalar);
-  std::vector<Tensor> a;
-  return a;
+  return foreach_tensor_add_scalar_stub(tensors[0].device().type(), tensors, scalar);
 }
-
-DEFINE_DISPATCH(foreach_add_scalar_stub);
+DEFINE_DISPATCH(foreach_tensor_add_scalar_stub);
 
 }}
