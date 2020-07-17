@@ -89,6 +89,9 @@ class StubRpcAgent:
     def __init__(self, world_size):
         self.world_size = world_size
 
+    def shutdown(self):
+        pass
+
     def get_worker_infos(self):
         return {
             rpc.WorkerInfo(name=worker_name(rank), id=rank)
@@ -3345,6 +3348,8 @@ class RpcTest(RpcAgentTestFixture):
         # Test PG
         dist.barrier()
 
+        rpc.shutdown()
+
     @dist_init(setup_rpc=False)
     def test_init_rpc_then_pg(self):
         rpc.init_rpc(
@@ -3369,6 +3374,8 @@ class RpcTest(RpcAgentTestFixture):
 
         # Test PG
         dist.barrier()
+
+        rpc.shutdown()
 
     @dist_init
     def test_wait_all_with_exception(self):
